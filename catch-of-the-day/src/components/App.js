@@ -20,6 +20,15 @@ class App extends React.Component {
         });
     }
 
+    componentDidUpdate() {
+        const {params} = this.props.match;
+        localStorage.setItem(params.storeID, JSON.stringify(this.state.order));
+    }
+
+    componentWillUnmount() {
+        base.removeBinding(this.ref);
+    }
+
     addFish = (fish) => {
         const fishes = {...this.state.fishes};
         fishes[`fish${Date.now()}`] = fish;
