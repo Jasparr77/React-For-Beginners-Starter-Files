@@ -12,7 +12,7 @@ class Inventory extends React.Component {
                     key = {key}
                     index = {key}
                     fish = {this.props.fishes[key]}
-                    updateFish = {this.props.updatedFish}  
+                    updateFish = {this.props.updateFish}  
                     />
                 ))}
                 <AddFishForm addFish={this.props.addFish} />
