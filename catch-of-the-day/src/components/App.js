@@ -27,10 +27,7 @@ class App extends React.Component {
 
     componentDidUpdate() {
         const {params} = this.props.match;
-        localStorage.setItem(
-            params.storeId, 
-            JSON.stringify(this.state.order)
-        );
+        localStorage.setItem(params.storeId, JSON.stringify(this.state.order));
     }
 
     componentWillUnmount() {
@@ -42,25 +39,14 @@ class App extends React.Component {
         fishes[`fish${Date.now()}`] = fish;
         this.setState({ fishes });
     };
-    updateFish = (key, updatedFish) => {
-        const fishes = {...this.state.fishes};
-        fishes[key] = updatedFish;
-        this.setState({ fishes });
-    };
-    deleteFish = (key) => {
-        const fishes = {...this.state.fishes};
-        fishes[key] = null;
-        this.setState({ fishes })
-    };
-
     loadSampleFishes = () => {
         this.setState({fishes : sampleFishes});
-    };
+    }
     addToOrder = (key) => {
         const order = {...this.state.order};
         order[key] = order[key] +1 || 1;
         this.setState({ order }); 
-    };
+    }
     render() {
         return (
             <div className="catch-of-the-day">
@@ -83,13 +69,14 @@ class App extends React.Component {
                 />
                 <Inventory 
                 addFish={this.addFish}
-                updateFish={this.updateFish}
                 loadSampleFishes={this.loadSampleFishes}
                 fishes={this.state.fishes}
                 />
             </div>
-        );
+        )
     }
+
+
 }
 
 export default App;
